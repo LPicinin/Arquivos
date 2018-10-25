@@ -14,7 +14,7 @@ void cria_arquivo(char nome[], int quantidade_de_registros)
     FILE *arq = fopen("dados.dat", "wb");//arquivo bin?rio
     registro reg;
     int aux_pos, i;
-    for (i = 0; i < quantidade_de_registros && quantidade_de_registros < 1000; ++i)
+    for (i = 0; i < quantidade_de_registros; ++i)
     {
         reg.cod = i;
         sprintf(reg.nome, "nome%d", reg.cod);
@@ -27,7 +27,7 @@ int getQuantidadeRegistros(char nomearq[])
 	FILE *arq = fopen("dados.dat", "rb+");
 	if(arq != null)
 	{
-		fseek(arq, 0, 2);
+		fseek(arq, 0, 2);//posiciona no final do arquivo
 		return ftell(arq) / sizeof(registro);
 	}
 	else
@@ -39,7 +39,7 @@ registro get(int n, char nomearq[])
 	registro reg;
 	if(arq != null)
 	{
-		fseek(arq, sizeof(registro)*n, 0);
+		fseek(arq, sizeof(registro)*n, 0);//posiciona na posição selecionada
 		fread(&reg,sizeof(registro), 1, arq);
 		fclose(arq);
 	}
@@ -50,7 +50,7 @@ void set(int n, char nomearq[], registro r)
 	FILE *arq = fopen("dados.dat", "rb+");
 	if(arq != null)
 	{
-		fseek(arq, sizeof(registro)*n, 0);
+		fseek(arq, sizeof(registro)*n, 0);//posiciona na posição selecionada
 		fwrite(&r,sizeof(registro), 1, arq);
 		fclose(arq);
 	}
