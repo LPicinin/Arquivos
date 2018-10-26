@@ -14,7 +14,7 @@ void cria_arquivo(char nome[], int quantidade_de_registros)
     FILE *arq = fopen(nome, "wb");//arquivo bin?rio
     registro reg;
     int aux_pos, i;
-    for (i = 0; i < quantidade_de_registros; ++i)
+    for (i = quantidade_de_registros-1; i >= 0; i--)
     {
         reg.cod = i;
         sprintf(reg.nome, "nome%d", reg.cod);
@@ -60,15 +60,30 @@ void set(int n, char nomearq[], registro r)
 }
 void exibe(char nome[])
 {
-	FILE *arq = fopen(nome, "rb");
 	registro r;
-	if(arq != null)
+	int i, tf = getQuantidadeRegistros(nome);
+	for(i = 0; i < tf; i++)
 	{
-		do
+		r = get(i, nome);
+		printf("cod = %d, nome = %s\n", r.cod, r.nome);
+	}
+}
+void bouble_sort(char n[])
+{
+	registro r, r2;
+	int i, j, tf;
+	tf = getQuantidadeRegistros(n);
+	for(i = 0; i < tf; i++)
+	{
+		for(j = 0; j < tf-1; j++)
 		{
-			fread(&r, sizeof(registro), 1, arq);
-			printf("cod = %d, nome = %s\n", r.cod, r.nome);
-		}while(!feof(arq));
-		fclose(arq);
+			r = get(j, n);
+			r2 = get(j+1, n);
+			if(r.cod >r2.cod)
+			{
+				set(j+1, n, r);
+				set(j, n, r2);
+			}
+		}
 	}
 }
