@@ -22,6 +22,7 @@ void cria_arquivo(char nome[], int quantidade_de_registros)
     }
     fclose(arq);
 }
+
 int getQuantidadeRegistros(char nomearq[])
 {
 	FILE *arq = fopen(nomearq, "rb+");
@@ -57,6 +58,24 @@ void set(int n, char nomearq[], registro r)
 		fwrite(&r,sizeof(registro), 1, arq);
 		fclose(arq);
 	}
+}
+void insere_fim(char na[], registro r)//insere registro no final do arquivo
+{
+	FILE *arq = fopen(na, "ab");
+	if(arq != null)
+		fwrite(&r, sizeof(registro), 1, arq);
+	fclose(arq);
+}
+void insere_inicio(char na[], registro r)//insere registro no inicio do arquivo
+{
+	insere_fim(na, r);
+	int i, max;
+	max = getQuantidadeRegistros(na);
+	for(i = max-1; i >0; i--)
+	{
+		set(i, na, get(i-1, na));
+	}
+	set(0, na, r);
 }
 void exibe(char nome[])
 {
