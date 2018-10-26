@@ -8,14 +8,14 @@
 int main()
 {
     srand(time(null));
-    //cria_arquivo("teste.dat", 50);
-    //printf("%d", getQuantidadeRegistros("teste.dat"));//pega tf do arquivo
-    registro r2;
+    //cria_arquivo("dados.dat", 50);
+    printf("%d", getQuantidadeRegistros("dados.dat"));//pega tf do arquivo
+    /*registro r2;
     r2.cod = 78;
     strcpy(r2.nome, "teste");
-    set(3, "teste.dat", r2);
-    registro r = get(3, "teste.dat");//pega o elemento da posicao informada
-    printf("%d, %s", r.cod, r.nome);
-    //exibe("teste.dat");
+    set(3, "dados.dat", r2);
+    registro r = get(3, "dados.dat");//pega o elemento da posicao informada
+    printf("%d, %s", r.cod, r.nome);*/
+    exibe("dados.dat");
     return 0;
 }

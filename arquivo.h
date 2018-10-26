@@ -11,7 +11,7 @@ typedef struct Registro registro;
 
 void cria_arquivo(char nome[], int quantidade_de_registros)
 {
-    FILE *arq = fopen("dados.dat", "wb");//arquivo bin?rio
+    FILE *arq = fopen(nome, "wb");//arquivo bin?rio
     registro reg;
     int aux_pos, i;
     for (i = 0; i < quantidade_de_registros; ++i)
@@ -24,18 +24,21 @@ void cria_arquivo(char nome[], int quantidade_de_registros)
 }
 int getQuantidadeRegistros(char nomearq[])
 {
-	FILE *arq = fopen("dados.dat", "rb+");
+	FILE *arq = fopen(nomearq, "rb+");
+	long int aux;
 	if(arq != null)
 	{
 		fseek(arq, 0, 2);//posiciona no final do arquivo
-		return ftell(arq) / sizeof(registro);
+		aux = ftell(arq);
+		fclose(arq);
+		return aux / sizeof(registro);
 	}
 	else
 		return -1;
 }
 registro get(int n, char nomearq[])
 {
-	FILE *arq = fopen("dados.dat", "rb+");
+	FILE *arq = fopen(nomearq, "rb+");
 	registro reg;
 	if(arq != null)
 	{
@@ -47,7 +50,7 @@ registro get(int n, char nomearq[])
 }
 void set(int n, char nomearq[], registro r)
 {
-	FILE *arq = fopen("dados.dat", "rb+");
+	FILE *arq = fopen(nomearq, "rb+");
 	if(arq != null)
 	{
 		fseek(arq, sizeof(registro)*n, 0);//posiciona na posição selecionada
@@ -57,7 +60,7 @@ void set(int n, char nomearq[], registro r)
 }
 void exibe(char nome[])
 {
-	FILE *arq = fopen("dados.dat", "rb");
+	FILE *arq = fopen(nome, "rb");
 	registro r;
 	if(arq != null)
 	{
