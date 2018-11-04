@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout>
 	<Files>
-		<File Name="arquivo.h" Top="Yes" Tabpos="1" TopLine="58">
-			<Cursor Line="17" Column="45"/>
+		<File Name="arquivo.h" Top="Yes" Tabpos="1" TopLine="1">
+			<Cursor Line="79" Column="2"/>
 		</File>
 		<File Name="main.c" Top="No" Tabpos="2" TopLine="1">
-			<Cursor Line="20" Column="30"/>
+			<Cursor Line="18" Column="32"/>
 		</File>
 	</Files>
 </Layout>
