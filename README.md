@@ -12,6 +12,6 @@ Funções presentes no .h:
   - insere_inicio(...)
   - insere_fim(...)
 
-# Novas características!
+# Recursos adicionais
 
   - Método BubleSort(...) já implementado
